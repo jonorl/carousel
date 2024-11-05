@@ -1,2 +1,2 @@
 # to do list
-To do list project for Project Odin
+Carousel project for Project Odin

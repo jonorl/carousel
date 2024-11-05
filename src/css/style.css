@@ -6,3 +6,27 @@
   font-size: large;
   font-family: "Roboto";
 }
+
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.number {
+  display: none;
+}
+
+#one.number {
+  display: block;
+}
+
+img {
+  width:640px;
+  height: 480px;
+}
+
+.nextPreviousButtons {
+  display: flex;
+  justify-content: center;
+  gap: 4vh;
+}

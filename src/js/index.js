@@ -6,3 +6,9 @@ import "../css/style.css";
 
 // Event listeners
 
+imageContainer = document.querySelectorAll(".image-container")
+
+imageContainer.forEach(image => {
+    
+    
+});
