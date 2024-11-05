@@ -1,7 +1,7 @@
 {
-  "name": "dropdownmenu",
+  "name": "carousel",
   "version": "1.0.0",
-  "description": "dropdown menu for Project Odin",
+  "description": "carousel project for Project Odin",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
