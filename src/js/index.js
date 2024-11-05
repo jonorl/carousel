@@ -2,13 +2,26 @@ import "../css/style.css";
 
 // Global variables
 
-
-
+const imageContainer = document.querySelectorAll(".image-container img")
+const nextButton = document.querySelector(".next")
 // Event listeners
 
-imageContainer = document.querySelectorAll(".image-container")
+nextButton.addEventListener("click", nextImage)
 
-imageContainer.forEach(image => {
-    
-    
-});
+
+function nextImage() {
+
+    for (let image of imageContainer){
+        let token = false
+
+        if (image.style.display === "none" && token === false) {
+            image.style.display = "block";
+            token = true;
+        }
+        else {
+            image.style.display = "none";
+            token = false;
+            break;
+        }
+    };
+}
