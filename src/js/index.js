@@ -4,6 +4,7 @@ import "../css/style.css";
 
 const imageContainer = document.querySelectorAll(".image-container img")
 const nextButton = document.querySelector(".next")
+const previousButton = document.querySelector(".prev")
 let imagesArray = []
 
 // Event listeners
@@ -21,14 +22,11 @@ function indexImages(arr) {
 indexImages(imagesArray);
 
 function nextImage (){
-    for (let index = 0; index < (imagesArray.length); index++) {
+    for (let index = 0; index < imagesArray.length; index++) {
         let nextImage;
         let currentImage = document.querySelector(`.number[data-image-number="${index}"]`);
         let computedStyle = window.getComputedStyle(currentImage).getPropertyValue("display");
-        console.log("display: " + computedStyle)
-        console.log("index: " + index +  " ImgArrayLen: " + (imagesArray.length))
         if (computedStyle === "block" && index !== (imagesArray.length - 1)){
-            console.log("condition 1")
             let nextIndex = index + 1
             nextImage = document.querySelector(`.number[data-image-number="${nextIndex}"]`);
             currentImage.style.display = "none";
@@ -36,14 +34,34 @@ function nextImage (){
             break;
         }
         else if (computedStyle === "block" && index === (imagesArray.length - 1)){
-            console.log("condition 2")
             nextImage = document.querySelector(`.number[data-image-number="0"]`);
             currentImage.style.display = "none";
             nextImage.style.display = "block"
             break;
         }
-        else console.log("condition 3")
     }
 }
 
-nextButton.addEventListener("click", nextImage)
+function previousImage(){
+    for (let index = 0; index < imagesArray.length; index++) {
+        let nextImage;
+        let currentImage = document.querySelector(`.number[data-image-number="${index}"]`);
+        let computedStyle = window.getComputedStyle(currentImage).getPropertyValue("display");
+        if (computedStyle === "block" && index === 0){
+            nextImage = document.querySelector(`.number[data-image-number="${(imagesArray.length - 1)}"]`);
+            currentImage.style.display = "none";
+            nextImage.style.display = "block"
+            break;
+        }
+        else if (computedStyle === "block" && index !== 0){
+            let nextIndex = index - 1
+            nextImage = document.querySelector(`.number[data-image-number="${nextIndex}"]`);
+            currentImage.style.display = "none";
+            nextImage.style.display = "block";
+            break;
+        }
+    }
+}
+
+nextButton.addEventListener("click", nextImage);
+previousButton.addEventListener("click", previousImage);
