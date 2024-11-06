@@ -16,7 +16,10 @@ for (let image of imageContainer) {
 
 indexImages(imagesArray);
 createDots(imagesArray);
-timeOut();
+
+// Set a timer to move to the next image after 5 seconds and stop if clicking anywhere
+let timeOut = setInterval(nextImage, 5000);
+window.addEventListener("click", () => clearInterval(timeOut));
 
 // Event listeners
 
@@ -45,13 +48,6 @@ function createDots(arr) {
     dotImageSelectors.appendChild(dot);
     dotButtons = document.querySelectorAll(".dot");
   });
-}
-
-function timeOut() {
-  setTimeout(() => {
-    nextImage();
-    timeOut();
-  }, 5000);
 }
 
 // DOM functions
