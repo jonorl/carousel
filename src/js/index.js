@@ -16,46 +16,55 @@ for (let image of imageContainer) {
 
 indexImages(imagesArray);
 createDots(imagesArray);
+timeOut();
 
 // Event listeners
 
 nextButton.addEventListener("click", nextImage);
 previousButton.addEventListener("click", previousImage);
-dotButtons.forEach(dot => {
-    dot.addEventListener("click", (event) =>{
-        dotImage(event);
-    })
+dotButtons.forEach((dot) => {
+  dot.addEventListener("click", (event) => {
+    dotImage(event);
+  });
 });
 
 // Auxiliary functions
 
 function indexImages(arr) {
-    arr.forEach((image, index) => {
-      image.setAttribute(`data-image-number`, index);
-    });
-  }
-  
-  function createDots(arr){
-      arr.forEach((image, index) => {
-          const dot = document.createElement("div");
-          dot.setAttribute(`data-image-number`, index);
-          dot.setAttribute('class', 'dot')
-          const dotImageSelectors = document.querySelector('.dotImageSelectors');
-          dotImageSelectors.appendChild(dot);
-          dotButtons = document.querySelectorAll(".dot");
+  arr.forEach((image, index) => {
+    image.setAttribute(`data-image-number`, index);
   });
-  }
+}
+
+function createDots(arr) {
+  arr.forEach((image, index) => {
+    const dot = document.createElement("div");
+    dot.setAttribute(`data-image-number`, index);
+    dot.setAttribute("class", "dot");
+    const dotImageSelectors = document.querySelector(".dotImageSelectors");
+    dotImageSelectors.appendChild(dot);
+    dotButtons = document.querySelectorAll(".dot");
+  });
+}
+
+function timeOut() {
+  setTimeout(() => {
+    nextImage();
+    timeOut();
+  }, 5000);
+}
 
 // DOM functions
 
-function dotImage(event){
-
-    imagesArray.forEach(image => {
-        image.style.display = "none";
-    });
-    let dataAttribute =  event.target.getAttribute("data-image-number");
-    let currentImage = document.querySelector(`.number[data-image-number="${dataAttribute}"]`);
-    currentImage.style.display = "block";
+function dotImage(event) {
+  imagesArray.forEach((image) => {
+    image.style.display = "none";
+  });
+  let dataAttribute = event.target.getAttribute("data-image-number");
+  let currentImage = document.querySelector(
+    `.number[data-image-number="${dataAttribute}"]`
+  );
+  currentImage.style.display = "block";
 }
 
 function nextImage() {
