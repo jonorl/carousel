@@ -26,3 +26,18 @@ img {
   justify-content: center;
   gap: 4vh;
 }
+
+.dotImageSelectors {
+  display: flex;
+  justify-content: center;
+  gap: 4vh;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: aliceblue;
+  display: inline-block;
+}
